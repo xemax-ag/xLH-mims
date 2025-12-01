@@ -1,3 +1,7 @@
+HOST=192.168.1.31
+USER=xlh
+PASSWORD=xlh
+
 help:
 	# done
 
@@ -41,16 +45,41 @@ win_install_make:
 win_install_gh:
 	scoop install main/gh
 
-docker_update:
-	docker compose -f compose_xlh_mims.yaml down --remove-orphans
-	docker compose -f compose_xlh_mims.yaml up --pull always -d
+win_docker_update:
+	docker compose -f win_compose_xlh_mims.yaml down --remove-orphans
+	docker compose -f win_compose_xlh_mims.yaml up --pull always -d
 
-docker_dev:
-	docker compose -f compose_xlh_mims.yaml down --remove-orphans
-	docker compose -f compose_xlh_mims.yaml up --pull always
+win_docker_dev:
+	docker compose -f win_compose_xlh_mims.yaml down --remove-orphans
+	docker compose -f win_compose_xlh_mims.yaml up --pull always
 
-docker_up:
-	docker compose -f compose_xlh_mims.yaml up -d
+win_docker_up:
+	docker compose -f win_compose_xlh_mims.yaml up -d
 
-docker_down:
-	docker compose -f compose_xlh_mims.yaml down
+win_docker_down:
+	docker compose -f win_compose_xlh_mims.yaml down
+
+linux_docker_update:
+	docker compose -f linux_compose_xlh_mims.yaml down --remove-orphans
+	docker compose -f linux_compose_xlh_mims.yaml up --pull always -d
+
+linux_docker_dev:
+	docker compose -f linux_compose_xlh_mims.yaml down --remove-orphans
+	docker compose -f linux_compose_xlh_mims.yaml up --pull always
+
+linux_docker_up:
+	docker compose -f linux_compose_xlh_mims.yaml up -d
+
+linux_docker_down:
+	docker compose -f linux_compose_xlh_mims.yaml down
+
+linux_ssh_upload:
+	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
+		--exclude data \
+		--exclude .venv \
+		--exclude .git \
+		--exclude .idea \
+		--exclude .gitignore \
+		--exclude win_compose_xlh_mims.yaml \
+		--exclude **/*.bat \
+		./ ${USER}@${HOST}:xemax/docker/xlh-mims/
