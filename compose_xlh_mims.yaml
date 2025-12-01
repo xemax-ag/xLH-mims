@@ -1,0 +1,165 @@
+name: xlh_mims
+services:
+  xlh_mims_open_webui:
+    image: ghcr.io/open-webui/open-webui:latest  # https://github.com/open-webui/open-webui
+    container_name: xlh_mims_open_webui
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    volumes:
+      - ../xLH-mims-data/open_webui:/app/backend/data
+    environment:
+      #OPENAI_API_KEY: "OPENAI_API_KEY"
+      #PERPLEXITY_API_KEY: "PERPLEXITY_API_KEY"
+      #ENABLE_ENFORCE_PASSWORD_POLICY: "true"
+      ENV: "dev"
+    restart: unless-stopped
+
+  xlh_mims_n8n:
+    image: docker.n8n.io/n8nio/n8n  # https://hub.docker.com/r/n8nio/n8n
+    container_name: xlh_mims_n8n
+    ports:
+      - 5678:5678
+    expose:
+      - 5678
+    environment:
+      GENERIC_TIMEZONE: "Europe/Berlin"
+      TZ: "Europe/Berlin"
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+      N8N_RUNNERS_ENABLED: "true"
+    volumes:
+      - ../xLH-mims-data/n8n:/home/node/.n8n
+    restart: unless-stopped
+
+#  xlh_mims_postgres:
+#    image: postgres:18.1  # https://hub.docker.com/_/postgres
+#    container_name: xlh_mims_postgres
+#    build: .
+#    ports:
+#      - 5432:5432
+#    expose:
+#      - 5432
+#    environment:
+#      - "POSTGRES_USER=postgres"
+#      - "POSTGRES_PASSWORD=postgres"
+#    volumes:
+#      - ../xLH-mims-data/postgres:/var/lib/postgresql
+#    restart: unless-stopped
+
+#  xlh_mims_redis:
+#    image: redis/redis-stack:7.4.0-v8  # https://hub.docker.com/r/redis/redis-stack
+#    container_name: xlh_mims_redis
+#    build: .
+#    ports:
+#      - 6379:6379
+#      - 8001:8001
+#    expose:
+#      - 6379
+#    volumes:
+#      - ../xLH-mims-data/redis:/data
+#    restart: unless-stopped
+
+#  xlh_mims_redis_rq_dashboard:
+#    image: cjlapao/rq-dashboard:latest  # https://hub.docker.com/r/cjlapao/rq-dashboard
+#    container_name: xlh_mims_redis_rq_dashboard
+#    build: .
+#    ports:
+#      - 9181:9181
+#    environment:
+#      RQ_DASHBOARD_REDIS_URL: "redis://xlh_mims_redis:6379"
+#    restart: unless-stopped
+
+#  xlh_mims_chromadb:
+#    image: chromadb/chroma  # https://hub.docker.com/r/chromadb/chroma
+#    container_name: xlh_mims_chromadb
+#    build: .
+#    ports:
+#      - 8000:8000
+#    expose:
+#      - 8000
+#    volumes:
+#      - ../xLH-mims-data/chromadb:/data
+#    restart: unless-stopped
+
+#  xlh_mims_qdrant:
+#    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
+#    container_name: xlh_mims_qdrant
+#    ports:
+#      - 6333:6333
+#      - 6334:6334
+#      - 6335:6335
+#    expose:
+#      - 6333
+#      - 6334
+#      - 6335
+#    volumes:
+#      - ../xLH-mims-data/qdrant:/qdrant/storage
+#    restart: unless-stopped
+
+#  xlh_mims_rabbitmq:
+#    image: rabbitmq:management  # https://hub.docker.com/_/rabbitmq
+#    container_name: xlh_mims_rabbitmq
+#    ports:
+#      - 15672:15672
+#      - 5672:5672
+#    expose:
+#      - 5672
+#    volumes:
+#      - ../xLH-mims-data/rabbitmq:/var/lib/rabbitmq
+#    restart: unless-stopped
+
+#  xlh_mims_node_red:
+#    image: nodered/node-red:latest
+#    container_name: xlh_mims_node_red
+#    environment:
+#      TZ: "Europe/Berlin"
+#    ports:
+#      - 1880:1880
+#    expose:
+#      - 1880
+#    volumes:
+#      - ../xLH-mims-data/node_red:/data
+#    restart: unless-stopped
+
+  xlh_mims_moodle:
+    image: ellakcy/moodle:mysql_maria_apache_404_php8.3  # https://hub.docker.com/r/ellakcy/moodle
+    container_name: xlh_mims_moodle
+    ports:
+      - 8081:80
+    expose:
+      - 80
+    environment:
+      MOODLE_DB_HOST: "xlh_mims_moodle_db"
+      MOODLE_URL: "http://localhost:8081"
+      MOODLE_DB_TYPE: "mariadb"
+      MOODLE_DB_PASSWORD: "admin"
+      MOODLE_DB_USER: "admin"
+      MOODLE_DB_NAME: "moodle"
+      MOODLE_DB_PORT: 3306
+      #MOODLE_ADMIN: "admin"
+      #MOODLE_ADMIN_PASSWORD: "Admin~1234"
+      #MOODLE_ADMIN_EMAIL: "admin@example.com"
+    depends_on:
+      - xlh_mims_moodle_db
+    volumes:
+      - ../xLH-mims-data/moodle/data:/var/moodledata
+      - ../xLH-mims-data/moodle/html:/var/www/html
+    restart: unless-stopped
+
+  xlh_mims_moodle_db:
+    image: mariadb:10.2  # https://hub.docker.com/_/mariadb
+    container_name: xlh_mims_moodle_db
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: "moodle"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_ONETIME_PASSWORD: "yes"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
+    volumes:
+      - ../xLH-mims-data/moodle/db:/var/lib/mysql:Z
+    restart: unless-stopped
