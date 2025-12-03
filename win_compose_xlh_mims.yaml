@@ -122,44 +122,44 @@ services:
       - ../xLH-mims-data/node_red:/data
     restart: unless-stopped
 
-  xlh_mims_moodle:
-    image: ellakcy/moodle:mysql_maria_apache_404_php8.3  # https://hub.docker.com/r/ellakcy/moodle
-    container_name: xlh_mims_moodle
-    ports:
-      - 8081:80
-    expose:
-      - 80
-    environment:
-      MOODLE_DB_HOST: "xlh_mims_moodle_db"
-      MOODLE_URL: "http://localhost:8081"
-      MOODLE_DB_TYPE: "mariadb"
-      MOODLE_DB_PASSWORD: "admin"
-      MOODLE_DB_USER: "admin"
-      MOODLE_DB_NAME: "moodle"
-      MOODLE_DB_PORT: 3306
-      MOODLE_ADMIN: "admin"
-      MOODLE_ADMIN_PASSWORD: "admin"
-      MOODLE_ADMIN_EMAIL: "admin@example.com"
-    depends_on:
-      - xlh_mims_moodle_db
-    volumes:
-      - ../xLH-mims-data/moodle/data:/var/moodledata
-      - ../xLH-mims-data/moodle/html:/var/www/html
-    restart: unless-stopped
+#  xlh_mims_moodle:
+#    image: ellakcy/moodle:mysql_maria_apache_404_php8.3  # https://hub.docker.com/r/ellakcy/moodle
+#    container_name: xlh_mims_moodle
+#    ports:
+#      - 8081:80
+#    expose:
+#      - 80
+#    environment:
+#      MOODLE_DB_HOST: "xlh_mims_moodle_db"
+#      MOODLE_URL: "http://localhost:8081"
+#      MOODLE_DB_TYPE: "mariadb"
+#      MOODLE_DB_PASSWORD: "admin"
+#      MOODLE_DB_USER: "admin"
+#      MOODLE_DB_NAME: "moodle"
+#      MOODLE_DB_PORT: 3306
+#      MOODLE_ADMIN: "admin"
+#      MOODLE_ADMIN_PASSWORD: "admin"
+#      MOODLE_ADMIN_EMAIL: "admin@example.com"
+#    depends_on:
+#      - xlh_mims_moodle_db
+#    volumes:
+#      - ../xLH-mims-data/moodle/data:/var/moodledata
+#      - ../xLH-mims-data/moodle/html:/var/www/html
+#    restart: unless-stopped
 
-  xlh_mims_moodle_db:
-    image: mariadb:10.6  # https://hub.docker.com/_/mariadb
-    container_name: xlh_mims_moodle_db
-    ports:
-      - 3306:3306
-    expose:
-      - 3306
-    environment:
-      MYSQL_DATABASE: "moodle"
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_ONETIME_PASSWORD: "yes"
-      MYSQL_USER: "admin"
-      MYSQL_PASSWORD: "admin"
-    volumes:
-      - ../xLH-mims-data/moodle/db:/var/lib/mysql:Z
-    restart: unless-stopped
+#  xlh_mims_moodle_db:
+#    image: mariadb:10.6  # https://hub.docker.com/_/mariadb
+#    container_name: xlh_mims_moodle_db
+#    ports:
+#      - 3306:3306
+#    expose:
+#      - 3306
+#    environment:
+#      MYSQL_DATABASE: "moodle"
+#      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+#      MYSQL_ONETIME_PASSWORD: "yes"
+#      MYSQL_USER: "admin"
+#      MYSQL_PASSWORD: "admin"
+#    volumes:
+#      - ../xLH-mims-data/moodle/db:/var/lib/mysql:Z
+#    restart: unless-stopped
