@@ -163,3 +163,16 @@ services:
 #    volumes:
 #      - ../xLH-mims-data/moodle/db:/var/lib/mysql:Z
 #    restart: unless-stopped
+
+#  xlh_mims_mariadb:
+#    image: mariadb:latest  # https://hub.docker.com/_/mariadb
+#    container_name: xlh_mims_mariadb
+#    ports:
+#      - 3306:3306
+#    expose:
+#      - 3306
+#    environment:
+#      MARIADB_ROOT_PASSWORD: "root"
+#    volumes:
+#      - ../xLH-mims-data/mariadb:/var/lib/mysql:Z
+#    restart: unless-stopped
