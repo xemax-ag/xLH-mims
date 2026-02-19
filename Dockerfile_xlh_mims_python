@@ -1,0 +1,23 @@
+FROM debian:trixie
+
+RUN apt-get update && apt-get install --no-install-recommends build-essential -y &&  \
+    apt install python3-dev default-libmysqlclient-dev build-essential pkg-config -y &&  \
+    apt install unzip && apt install graphviz -y && apt install default-jre -y &&  \
+    apt install openssh-client -y && apt install iputils-ping -y && \
+    apt install pgloader -y &&  apt install rsync -y && apt install nano -y && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+COPY ./pyproject.toml .
+COPY ./.python-version .
+RUN uv sync
+RUN #uv sync --upgrade
+COPY ./docker_xlh_mims_python.sh .
+COPY /notebooks notebooks
+
+#EXPOSE $PORT
+ENV PATH="/app/.venv/bin:$PATH"
+#CMD ["uvicorn", "app.main:app", "--log-level", "info", "--host", "0.0.0.0" , "--port", "80"]
+CMD ["bash", "docker_xlh_mims_python.sh"]

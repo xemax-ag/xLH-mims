@@ -1,5 +1,18 @@
 name: xlh_mims
 services:
+  xlh_mims_python:
+    image: xemaxag/xlh_mims_python:latest
+    container_name: xlh_mims_python
+    build: .
+    ports:
+      - 8888:8888
+    expose:
+      - 8888
+    volumes:
+      - ../xLH-mims-data/python:/app/notebooks/data
+    restart: no
+# docker exec -it xlh_mims_python bash
+
   xlh_mims_open_webui:
     image: ghcr.io/open-webui/open-webui:latest  # https://github.com/open-webui/open-webui
     container_name: xlh_mims_open_webui
@@ -14,7 +27,7 @@ services:
       #PERPLEXITY_API_KEY: "PERPLEXITY_API_KEY"
       #ENABLE_ENFORCE_PASSWORD_POLICY: "true"
       ENV: "dev"
-    restart: unless-stopped
+    restart: no
 
   xlh_mims_n8n:
     image: docker.n8n.io/n8nio/n8n  # https://hub.docker.com/r/n8nio/n8n
@@ -30,10 +43,10 @@ services:
       N8N_RUNNERS_ENABLED: "true"
     volumes:
       - ../xLH-mims-data/n8n:/home/node/.n8n
-    restart: unless-stopped
+    restart: no
 
   xlh_mims_postgres:
-    image: postgres:18.1  # https://hub.docker.com/_/postgres
+    image: postgres:18.2  # https://hub.docker.com/_/postgres
     container_name: xlh_mims_postgres
     build: .
     ports:
@@ -45,7 +58,29 @@ services:
       - "POSTGRES_PASSWORD=postgres"
     volumes:
       - ../xLH-mims-data/postgres:/var/lib/postgresql
-    restart: unless-stopped
+    restart: no
+
+  xlh_mims_mysql:
+    image: mysql:latest
+    container_name: dev_mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3307:3306"
+    volumes:
+      - ../xLH-mims-data/mysql:/var/lib/mysql
+    restart: "no"
+
+  xlh_mims_mariadb:
+    image: mariadb:latest
+    container_name: dev_mariadb
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../xLH-mims-data/mariadb:/var/lib/mysql
+    restart: "no"
 
   xlh_mims_redis:
     image: redis/redis-stack:7.4.0-v8  # https://hub.docker.com/r/redis/redis-stack
@@ -58,17 +93,19 @@ services:
       - 6379
     volumes:
       - ../xLH-mims-data/redis:/data
-    restart: unless-stopped
+    restart: no
 
-  xlh_mims_redis_rq_dashboard:
-    image: cjlapao/rq-dashboard:latest  # https://hub.docker.com/r/cjlapao/rq-dashboard
-    container_name: xlh_mims_redis_rq_dashboard
-    build: .
-    ports:
-      - 9181:9181
-    environment:
-      RQ_DASHBOARD_REDIS_URL: "redis://xlh_mims_redis:6379"
-    restart: unless-stopped
+#  xlh_mims_rabbitmq:
+#    image: rabbitmq:management  # https://hub.docker.com/_/rabbitmq
+#    container_name: xlh_mims_rabbitmq
+#    ports:
+#      - 15672:15672
+#      - 5672:5672
+#    expose:
+#      - 5672
+#    volumes:
+#      - ../xLH-mims-data/rabbitmq:/var/lib/rabbitmq
+#    restart: no
 
   xlh_mims_chromadb:
     image: chromadb/chroma  # https://hub.docker.com/r/chromadb/chroma
@@ -80,34 +117,22 @@ services:
       - 8000
     volumes:
       - ../xLH-mims-data/chromadb:/data
-    restart: unless-stopped
+    restart: no
 
-  xlh_mims_qdrant:
-    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
-    container_name: xlh_mims_qdrant
-    ports:
-      - 6333:6333
-      - 6334:6334
-      - 6335:6335
-    expose:
-      - 6333
-      - 6334
-      - 6335
-    volumes:
-      - ../xLH-mims-data/qdrant:/qdrant/storage
-    restart: unless-stopped
-
-  xlh_mims_rabbitmq:
-    image: rabbitmq:management  # https://hub.docker.com/_/rabbitmq
-    container_name: xlh_mims_rabbitmq
-    ports:
-      - 15672:15672
-      - 5672:5672
-    expose:
-      - 5672
-    volumes:
-      - ../xLH-mims-data/rabbitmq:/var/lib/rabbitmq
-    restart: unless-stopped
+#  xlh_mims_qdrant:
+#    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
+#    container_name: xlh_mims_qdrant
+#    ports:
+#      - 6333:6333
+#      - 6334:6334
+#      - 6335:6335
+#    expose:
+#      - 6333
+#      - 6334
+#      - 6335
+#    volumes:
+#      - ../xLH-mims-data/qdrant:/qdrant/storage
+#    restart: no
 
   xlh_mims_node_red:
     image: nodered/node-red:latest
@@ -120,7 +145,42 @@ services:
       - 1880
     volumes:
       - ../xLH-mims-data/node_red:/data
-    restart: unless-stopped
+    restart: no
+
+#  xlh_mims_webtop:
+#    image: lscr.io/linuxserver/webtop:ubuntu-kde
+#    container_name: xlh_mims_webtop
+#    #https://github.com/linuxserver/proot-apps?tab=readme-ov-file#supported-apps
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Germany
+#    volumes:
+#      - ../xLH-mims-data/webtop:/config
+#    ports:
+#      - 3000:3000
+#      - 3001:3001
+#    shm_size: "2gb"
+#    restart: no
+# https://github.com/linuxserver/proot-apps?tab=readme-ov-file#supported-apps
+#pip install uv && \
+#/config/.local/bin/proot-apps install libreoffice && \
+#/config/.local/bin/proot-apps install firefox && \
+#/config/.local/bin/proot-apps install filezilla && \
+#/config/.local/bin/proot-apps install pycharm
+
+  xlh_mims_mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: xlh_mims_mosquitto
+    ports:
+      - 1883:1883    # MQTT
+      # - 8883:8883    # MQTTS (secure)
+      # - 9001:9001    # WebSockets
+#    volumes:
+#      - ../xLH-mims-data/mosquitto/config:/mosquitto/config
+#      - ../xLH-mims-data/mosquitto/data:/mosquitto/data
+#      - ../xLH-mims-data/mosquitto/log:/mosquitto/log
+    restart: no
 
 #  xlh_mims_moodle:
 #    image: ellakcy/moodle:mysql_maria_apache_404_php8.3  # https://hub.docker.com/r/ellakcy/moodle
@@ -145,7 +205,7 @@ services:
 #    volumes:
 #      - ../xLH-mims-data/moodle/data:/var/moodledata
 #      - ../xLH-mims-data/moodle/html:/var/www/html
-#    restart: unless-stopped
+#    restart: no
 
 #  xlh_mims_moodle_db:
 #    image: mariadb:10.6  # https://hub.docker.com/_/mariadb
@@ -162,7 +222,7 @@ services:
 #      MYSQL_PASSWORD: "admin"
 #    volumes:
 #      - ../xLH-mims-data/moodle/db:/var/lib/mysql:Z
-#    restart: unless-stopped
+#    restart: no
 
 #  xlh_mims_mariadb:
 #    image: mariadb:latest  # https://hub.docker.com/_/mariadb
@@ -175,4 +235,4 @@ services:
 #      MARIADB_ROOT_PASSWORD: "root"
 #    volumes:
 #      - ../xLH-mims-data/mariadb:/var/lib/mysql:Z
-#    restart: unless-stopped
+#    restart: no

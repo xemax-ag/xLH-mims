@@ -34,6 +34,7 @@ dependencies = [
     "voyageai>=0.3.5",
     "pyclean>=3.4.0",
     "pytest>=9.0.1",
+    "jupyterlab>=4.5.0",
 ]
 
 [tool.pytest.ini_options]

@@ -45,6 +45,15 @@ win_install_make:
 win_install_gh:
 	scoop install main/gh
 
+build_dev: build win_docker_update
+	echo "done"
+
+build:
+	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64 -t xemaxag/xlh_mims_python .
+
+push:
+	docker push xemaxag/xlh_mims_python:latest
+
 win_docker_update:
 	docker compose -f win_compose_xlh_mims.yaml down --remove-orphans
 	docker compose -f win_compose_xlh_mims.yaml up --pull always -d

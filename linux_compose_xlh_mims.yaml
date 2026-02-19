@@ -47,6 +47,28 @@ services:
       - /home/xlh/xemax/docker/xlh-mims/data/postgres:/var/lib/postgresql
     restart: unless-stopped
 
+  dev_mysql:
+    image: mysql:latest
+    container_name: dev_mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /home/xlh/xemax/docker/xlh-mims/data/mysql:/var/lib/mysql
+    restart: "no"
+
+  dev_mariadb:
+    image: mariadb:latest
+    container_name: dev_mariadb
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3307:3306"
+    volumes:
+      - /home/xlh/xemax/docker/xlh-mims/data/mariadb:/var/lib/mysql
+    restart: "no"
+
   xlh_mims_redis:
     image: redis/redis-stack:7.4.0-v8  # https://hub.docker.com/r/redis/redis-stack
     container_name: xlh_mims_redis
@@ -82,20 +104,20 @@ services:
       - /home/xlh/xemax/docker/xlh-mims/data/chromadb:/data
     restart: unless-stopped
 
-  xlh_mims_qdrant:
-    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
-    container_name: xlh_mims_qdrant
-    ports:
-      - 6333:6333
-      - 6334:6334
-      - 6335:6335
-    expose:
-      - 6333
-      - 6334
-      - 6335
-    volumes:
-      - /home/xlh/xemax/docker/xlh-mims/data/qdrant:/qdrant/storage
-    restart: unless-stopped
+#  xlh_mims_qdrant:
+#    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
+#    container_name: xlh_mims_qdrant
+#    ports:
+#      - 6333:6333
+#      - 6334:6334
+#      - 6335:6335
+#    expose:
+#      - 6333
+#      - 6334
+#      - 6335
+#    volumes:
+#      - /home/xlh/xemax/docker/xlh-mims/data/qdrant:/qdrant/storage
+#    restart: unless-stopped
 
   xlh_mims_rabbitmq:
     image: rabbitmq:management  # https://hub.docker.com/_/rabbitmq
