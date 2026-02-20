@@ -17,6 +17,8 @@ RUN uv sync --upgrade
 COPY ./docker_xlh_mims_python.sh .
 COPY /notebooks notebooks
 COPY /app app
+COPY /app_ui app_ui
+COPY /docs/_build app/static/docs
 
 #EXPOSE $PORT
 

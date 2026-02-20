@@ -1,0 +1,23 @@
+[server]
+runOnSave = true
+#port = 8011
+# https://docs.streamlit.io/develop/concepts/configuration/serving-static-files
+enableStaticServing = true
+headless = true
+
+[browser]
+serverAddress = "localhost"
+#serverPort = 8011
+gatherUsageStats = false
+
+[client]
+showErrorDetails = true
+# "auto", "developer", "viewer", "minimal"
+#toolbarMode = "minimal"
+
+[theme]
+base = "dark"
+
+[logger]
+# Level of logging: 'error', 'warning', 'info', or 'debug'.
+level = "error"

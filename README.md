@@ -12,5 +12,6 @@ xemax Learning Hub machine intelligence maker space
 3. Extrahierung des ZIP Archives
   - Die Persistenten Daten der Docker Container befinden sich im Ordner "..\xLH-mims-data" (auf gleicher Hirarchyebene wie der zip-extrahierte Ordner)
 4. Starten des Docker Containers mittels win_docker_update.bat
-  - Die aktiven Container sind im Docker Desktop sichtbar  
-    <img src="docs/_static/img/docker_desktop_1.png" height="300" />
+  - Die aktiven Container sind im Docker Desktop sichtbar
+    <img src="https://raw.githubusercontent.com/xemax-ag/xLH-mims/refs/heads/main/docs/_static/img/docker_desktop_1.png" height="300" />
+    <-- Workaround Link auf GitHub für die Inkludierung in die automatische Dokumentierung mit Sphinx --> 
