@@ -5,6 +5,12 @@ PASSWORD=xlh
 help:
 	# done
 
+docs_serve:
+	uv run sphinx-autobuild --open-browser --delay 0 --port 8145 docs docs/_build
+
+docs:
+	uv run sphinx-build -b html docs docs/_build
+
 venv_build:
 	rm -rf .venv && rm -rf uv.lock && uv sync
 
@@ -45,10 +51,12 @@ win_install_make:
 win_install_gh:
 	scoop install main/gh
 
-build_dev: build win_docker_update
+build_dev: build push win_docker_dev
 	echo "done"
 
 build:
+	docker compose -f win_compose_xlh_mims.yaml down --remove-orphans
+	docker rmi -f xemaxag/xlh_mims_python
 	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64 -t xemaxag/xlh_mims_python .
 
 push:
