@@ -6,10 +6,10 @@ help:
 	# done
 
 docs_serve:
-	uv run sphinx-autobuild --open-browser --delay 0 --port 8145 docs docs/_build
+	uv run sphinx-autobuild --open-browser --delay 0 --port 8145 docs app/static/docs
 
 docs:
-	uv run sphinx-build -b html docs docs/_build
+	uv run sphinx-build -b html docs app/static/docs
 
 venv_sync:
 	powershell uv sync --upgrade
@@ -36,7 +36,7 @@ install_make:
 install_gh:
 	scoop install main/gh
 
-docker_build_dev: docker_build docker_push docker_docker_dev
+docker_build_dev: docs docker_build docker_push docker_docker_dev
 	echo "done"
 
 docker_build:
@@ -44,7 +44,7 @@ docker_build:
 	docker rmi -f xemaxag/xlh_mims_python
 	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64 -t xemaxag/xlh_mims_python .
 
-docker_push:
+docker_push: docs docker_build
 	docker push xemaxag/xlh_mims_python:latest
 
 docker_docker_update:
