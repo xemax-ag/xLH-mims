@@ -11,7 +11,8 @@ services:
     environment:
       MODE: "jupyterlab"
     volumes:
-      - ../xLH-mims-data/python:/app/notebooks/data
+      - ../xLH-mims-data/python:/app/notebooks/src/local
+      - ../xLH-mims-data/config:/app/config
     restart: no
 # docker exec -it xlh_mims_python_jupyterlab bash
 
@@ -25,6 +26,8 @@ services:
       - 8099
     environment:
       MODE: "api"
+    volumes:
+      - ../xLH-mims-data/config:/app/config
     restart: no
 # docker exec -it xlh_mims_python_api bash
 

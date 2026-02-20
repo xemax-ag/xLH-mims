@@ -3,7 +3,8 @@
 clear
 
 if [[ "${MODE:-}" == "jupyterlab" ]]; then
-  jupyter-lab --ip=0.0.0.0 --allow-root --NotebookApp.token='' --notebook-dir="notebooks"
+  uv run python ./notebooks/settings/run_jupyterlab.py
+  # jupyter-lab --ip=0.0.0.0 --allow-root --NotebookApp.token='' --notebook-dir="notebooks"
 elif [[ "${MODE:-}" == "api" ]]; then
   shell_dir="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
   cd "$shell_dir"

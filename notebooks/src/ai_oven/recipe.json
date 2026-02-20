@@ -1,0 +1,70 @@
+{
+  "title": "Pizza Lachs-Salami-Tomate",
+  "ingredients": [
+    {
+      "name": "Pizzateig (fertig oder selbstgemacht)",
+      "quantity": "1",
+      "unit": "Stk"
+    },
+    {
+      "name": "Tomatensauce (passierte Tomaten)",
+      "quantity": "120",
+      "unit": "ml"
+    },
+    {
+      "name": "Mozzarella",
+      "quantity": "150",
+      "unit": "g"
+    },
+    {
+      "name": "Lachs (geräuchert oder gegart)",
+      "quantity": "80",
+      "unit": "g"
+    },
+    {
+      "name": "Salami",
+      "quantity": "60",
+      "unit": "g"
+    },
+    {
+      "name": "Tomaten",
+      "quantity": "2",
+      "unit": "Stk"
+    },
+    {
+      "name": "Rote Zwiebel (optional)",
+      "quantity": "0.5",
+      "unit": "Stk"
+    },
+    {
+      "name": "Dill oder Petersilie (optional)",
+      "quantity": "1",
+      "unit": "EL"
+    },
+    {
+      "name": "Olivenöl",
+      "quantity": "1",
+      "unit": "EL"
+    },
+    {
+      "name": "Salz",
+      "quantity": "1",
+      "unit": "Prise"
+    },
+    {
+      "name": "Pfeffer",
+      "quantity": "1",
+      "unit": "Prise"
+    }
+  ],
+  "preparation_steps": [
+    "Backofen auf 225 °C Ober-/Unterhitze vorheizen (Blech/Pizzastein mit aufheizen).",
+    "Teig ausrollen und auf Backpapier legen.",
+    "Tomatensauce mit Olivenöl, Salz und Pfeffer verrühren und dünn aufstreichen.",
+    "Mozzarella darauf verteilen.",
+    "Tomaten in Scheiben schneiden, Salami in Stücke zupfen und beides auflegen.",
+    "Pizza 12–15 Minuten bei 225 °C backen, bis der Rand goldbraun ist (Gesamtzeit sicher unter 30 Minuten).",
+    "Lachs in Streifen zupfen und in den letzten 2 Minuten mit auf die Pizza geben (oder direkt nach dem Backen auflegen, damit er saftig bleibt).",
+    "Optional mit Zwiebelringen und Dill/Petersilie toppen, kurz ruhen lassen, schneiden und servieren."
+  ]
+}
