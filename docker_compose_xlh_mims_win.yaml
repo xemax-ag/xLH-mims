@@ -16,6 +16,22 @@ services:
     restart: no
 # docker exec -it xlh_mims_python_jupyterlab bash
 
+  xlh_mims_python_marimo:
+    image: xemaxag/xlh_mims_python:latest
+    container_name: xlh_mims_python_marimo
+    build: .
+    ports:
+      - 2718:2718
+    expose:
+      - 2718
+    environment:
+      MODE: "marimo"
+    volumes:
+      - ../xLH-mims-data/python:/app/notebooks/marimo/src/local
+      - ../xLH-mims-data/config:/app/config
+    restart: no
+# docker exec -it xlh_mims_python_marimo bash
+
   xlh_mims_python_api:
     image: xemaxag/xlh_mims_python:latest
     container_name: xlh_mims_python_api

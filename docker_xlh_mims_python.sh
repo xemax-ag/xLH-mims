@@ -5,6 +5,9 @@ clear
 if [[ "${MODE:-}" == "jupyterlab" ]]; then
   uv run python ./notebooks/settings/run_jupyterlab.py
   # jupyter-lab --ip=0.0.0.0 --allow-root --NotebookApp.token='' --notebook-dir="notebooks"
+elif [[ "${MODE:-}" == "marimo" ]]; then
+  cd notebooks/marimo/src
+  uv run marimo edit --port 2718 --headless --host 0.0.0.0 --no-token
 elif [[ "${MODE:-}" == "api" ]]; then
   shell_dir="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
   cd "$shell_dir"
