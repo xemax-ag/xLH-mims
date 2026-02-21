@@ -1,10 +1,7 @@
 # /// script
-# [tool.marimo.runtime]
-# auto_instantiate = false
-# on_cell_change = "lazy"
+# /// script
 # [tool.marimo.display]
 # theme = "dark"
-# cell_output = "below"
 # ///
 
 import marimo
