@@ -20,3 +20,4 @@ docker run --rm --privileged tonistiigi/binfmt --install all
 
  
 docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python --load .
+docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python:latest --load .
