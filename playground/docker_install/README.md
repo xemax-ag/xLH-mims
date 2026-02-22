@@ -26,3 +26,11 @@ docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/a
 MongoDb
 https://medium.com/norsys-octogone/a-local-environment-for-mongodb-with-docker-compose-ba52445b93ed
 https://github.com/TGITS/docker-compose-examples
+
+
+
+Check on the host
+On Windows, verify Ollama is listening on port 11434:
+netstat -ano | findstr 11434
+
+http://host.docker.internal:11434

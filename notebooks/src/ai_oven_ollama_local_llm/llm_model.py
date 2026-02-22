@@ -1,11 +1,10 @@
+import platform, sys, os
 from enum import StrEnum
-from pydantic import Field, BaseModel
 from pydantic_ai.models.openai import OpenAIChatModel, OpenAIResponsesModel
+from pydantic_ai.models.openai import OpenAIResponsesModelSettings
 from pydantic_ai.providers.ollama import OllamaProvider
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 from pydantic_ai.settings import ModelSettings
-from config import config
-from pydantic_ai.models.openai import OpenAIResponsesModelSettings
 
 
 class LlmModel(StrEnum):
@@ -63,8 +62,12 @@ def get_model(llm_model:LlmModel) \
                 frequency_penalty=0.0,
                 parallel_tool_calls=True,
             )
+            if sys.platform.startswith("win") or os.name == "nt" or platform.system() == "Windows":
+                base_url = f'http://localhost:11434/v1'
+            else:
+                base_url = f'http://host.docker.internal:11434/v1'
             model = OpenAIChatModel(model_name=llm_model,
-                                    provider=OllamaProvider(base_url=f'http://localhost:11434/v1',
+                                    provider=OllamaProvider(base_url=base_url,
                                                             api_key='ollama'),
                                     settings=settings)
             return model
