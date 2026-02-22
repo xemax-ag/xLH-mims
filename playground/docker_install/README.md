@@ -18,6 +18,11 @@ ARM64
 docker buildx ls
 docker run --rm --privileged tonistiigi/binfmt --install all
 
- 
 docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python --load .
-docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python:latest --load .
+docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 -t xemaxag/xlh_mims_python:latest .
+
+
+
+MongoDb
+https://medium.com/norsys-octogone/a-local-environment-for-mongodb-with-docker-compose-ba52445b93ed
+https://github.com/TGITS/docker-compose-examples

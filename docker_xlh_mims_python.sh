@@ -2,7 +2,7 @@
 #set -xe
 clear
 
-if [[ "${MODE:-}" == "jupyterlab" ]]; then
+if [[ "${MODE:-}" == "jupyter" ]]; then
   uv run python ./notebooks/settings/run_jupyterlab.py
   # jupyter-lab --ip=0.0.0.0 --allow-root --NotebookApp.token='' --notebook-dir="notebooks"
 elif [[ "${MODE:-}" == "marimo" ]]; then

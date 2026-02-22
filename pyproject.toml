@@ -73,3 +73,13 @@ dependencies = [
 
 [tool.pytest.ini_options]
 pythonpath = "."
+
+[tool.marimo.formatting]
+line_length = 120
+
+[tool.marimo.display]
+default_width = "full"
+theme = "dark"
+
+[tool.marimo.runtime]
+default_sql_output = "native"

@@ -36,22 +36,14 @@ install_make:
 install_gh:
 	scoop install main/gh
 
-docker_build_dev: docs docker_build docker_push docker_docker_dev
-	echo "done"
-
-docker_build:
-	docker compose -f docker_compose_xlh_mims.yaml down --remove-orphans
-	docker rmi -f xemaxag/xlh_mims_python
-	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 -t xemaxag/xlh_mims_python .
-
-docker_push: docs docker_build
+docker_build_dev: docs docker_update
+	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64 -t xemaxag/xlh_mims_python:latest .
 	docker push xemaxag/xlh_mims_python:latest
 
-docker_docker_update:
+docker_push: docs docker_update
+	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 -t xemaxag/xlh_mims_python:latest .
+	docker push xemaxag/xlh_mims_python:latest
+
+docker_update:
 	docker compose -f docker_compose_xlh_mims.yaml down --remove-orphans
 	docker compose -f docker_compose_xlh_mims.yaml up --pull always -d
-
-docker_docker_dev:
-	docker compose -f docker_compose_xlh_mims.yaml down --remove-orphans
-	docker compose -f docker_compose_xlh_mims.yaml up --pull always
-

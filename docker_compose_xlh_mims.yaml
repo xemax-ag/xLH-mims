@@ -1,20 +1,20 @@
 name: xlh_mims
 services:
-  xlh_mims_python_jupyterlab:
+  xlh_mims_python_jupyter:
     image: xemaxag/xlh_mims_python:latest
-    container_name: xlh_mims_python_jupyterlab
+    container_name: xlh_mims_python_jupyter
     build: .
     ports:
       - 8888:8888
     expose:
       - 8888
     environment:
-      MODE: "jupyterlab"
+      MODE: "jupyter"
     volumes:
-      - ../xLH-mims-data/python:/app/notebooks/src/local
+      - ../xLH-mims-data/python/jupyter:/app/notebooks/src/local
       - ../xLH-mims-data/config:/app/config
     restart: no
-# docker exec -it xlh_mims_python_jupyterlab bash
+# docker exec -it xlh_mims_python_jupyter bash
 
   xlh_mims_python_marimo:
     image: xemaxag/xlh_mims_python:latest
@@ -27,7 +27,7 @@ services:
     environment:
       MODE: "marimo"
     volumes:
-      - ../xLH-mims-data/python:/app/notebooks/marimo/src/local
+      - ../xLH-mims-data/python/marimo:/app/notebooks/marimo/src/local
       - ../xLH-mims-data/config:/app/config
     restart: no
 # docker exec -it xlh_mims_python_marimo bash
@@ -178,6 +178,22 @@ services:
     volumes:
       - ../xLH-mims-data/node_red:/data
     restart: no
+
+  xlh_mims_mongodb:
+    image: mongo:latest
+    container_name: xlh_mims_mongodb
+    hostname: xlh_mims_mongodb
+    volumes:
+#      - ./mongodb/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ../xLH-mims-data/mongodb/data:/data/db/
+      - ../xLH-mims-data/mongodb/log:/var/log/mongodb/
+#    environment:
+#      - "MONGO_INITDB_ROOT_USERNAME=root"
+#      - "MONGO_INITDB_ROOT_PASSWORD=root"
+    ports:
+      - "27017:27017"
+#    networks:
+#      - mongodb_network
 
 #  xlh_mims_webtop:
 #    image: lscr.io/linuxserver/webtop:ubuntu-kde
