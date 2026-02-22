@@ -10,5 +10,13 @@
         - docker compose -f docker_compose_xlh_mims_win.yaml up --pull always -d
         - Download und automatischer Start der Docker Images
         - Hinweis: Updates erfolgen durch erneute Eingabe der drei Befehlszeilen
+
+
+
+
+ARM64
+docker buildx ls
+docker run --rm --privileged tonistiigi/binfmt --install all
+
  
-    
+docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python --load .

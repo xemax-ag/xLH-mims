@@ -43,7 +43,8 @@ docker_build:
 	docker compose -f docker_compose_xlh_mims_win.yaml down --remove-orphans
 	docker rmi -f xemaxag/xlh_mims_python
 	#docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64 -t xemaxag/xlh_mims_python .
-	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 -t xemaxag/xlh_mims_python .
+	#docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 -t xemaxag/xlh_mims_python .
+	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/arm64 -t xemaxag/xlh_mims_python --load .
 
 docker_push: docs docker_build
 	docker push xemaxag/xlh_mims_python:latest
