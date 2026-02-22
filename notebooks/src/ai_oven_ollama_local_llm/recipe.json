@@ -1,0 +1,78 @@
+{
+  "title": "Lachs‑Salami‑Tomaten‑Pizza",
+  "ingredients": [
+    {
+      "name": "Teigbasis",
+      "quantity": "250",
+      "unit": "g"
+    },
+    {
+      "name": "Lachs",
+      "quantity": "200",
+      "unit": "g"
+    },
+    {
+      "name": "Salami",
+      "quantity": "100",
+      "unit": "g"
+    },
+    {
+      "name": "Tomaten",
+      "quantity": "3",
+      "unit": "Stk"
+    },
+    {
+      "name": "Zwiebel",
+      "quantity": "1",
+      "unit": "Stk"
+    },
+    {
+      "name": "Knoblauchzehe",
+      "quantity": "1",
+      "unit": "Stk"
+    },
+    {
+      "name": "Oregano (getrocknet)",
+      "quantity": "1",
+      "unit": "TL"
+    },
+    {
+      "name": "Basilikum (getrocknet)",
+      "quantity": "1",
+      "unit": "TL"
+    },
+    {
+      "name": "Salz",
+      "quantity": "nach Belieben",
+      "unit": "nach Belieben"
+    },
+    {
+      "name": "Pfeffer",
+      "quantity": "nach Belieben",
+      "unit": "nach Belieben"
+    },
+    {
+      "name": "Olivenöl",
+      "quantity": "2",
+      "unit": "EL"
+    },
+    {
+      "name": "Mozzarella",
+      "quantity": "100",
+      "unit": "g"
+    },
+    {
+      "name": "Rucola",
+      "quantity": "nach Belieben",
+      "unit": "Stk"
+    }
+  ],
+  "preparation_steps": [
+    "Backofen auf 225 °C vorheizen. Falls dein Ofen nicht mehr die gewünschte Temperatur erreicht, stelle ihn auf 225 °C ein – das ist die maximale Einstellung, die dein Ofen verträgt.",
+    "Teigbasis auf ein mit Backpapier belegtes Backblech legen. Optional: etwas Olivenöl darüber träufeln, um die Kruste knuspriger zu machen.",
+    "Die Tomatenscheiben gleichmäßig auf dem Teig verteilen. Dann die Lachswürfel, Salami‑Scheiben, Zwiebel‑ und Knoblauchstücke darauf anordnen.",
+    "Mit Oregano, Basilikum, Salz und Pfeffer bestreuen. Den geriebenen Mozzarella gleichmäßig darüber streuen.",
+    "Pizza für 15–20 Minuten backen, bis der Käse geschmolzen und leicht gebräunt ist. Achte darauf, dass die Backzeit 30 Minuten nicht überschreitet.",
+    "Aus dem Ofen nehmen, kurz abkühlen lassen und mit frischem Rucola garnieren, falls gewünscht. Sofort servieren."
+  ]
+}
