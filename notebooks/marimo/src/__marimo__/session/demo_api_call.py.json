@@ -1,0 +1,99 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.20.1"
+  },
+  "cells": [
+    {
+      "id": "vblA",
+      "code_hash": "3d04f26accab00e72cbbddb8c470f5b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"semantische-suche-futuremem-datenbank\">Semantische Suche FUTUREMEM Datenbank</h2>\n<span class=\"paragraph\">Die Datenabfrage erfolgt via API-Aufruf</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "9f495ce87305cc253b533a22f67ed4c8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "69204c4d18ef5f385b9ef2044bb70ea7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "1e4fd5773b0749dcba6c6023d46b102e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='bkHC-0' random-id='b5ba9ba7-d3e7-59b8-c797-eccaf5377f98'><marimo-text-area data-initial-value='&quot;&quot;' data-label='null' data-placeholder='&quot;Eingabe Suchbegriff [mit Tabulator oder CTRL + Enter wird der Request an die API gestartet]&quot;' data-disabled='false' data-debounce='true' data-full-width='false'></marimo-text-area></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "26eb2d5c7143208757a75ff6ddd39151",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "6232032335442b937babb84ee3fe79c8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">19.7 % | lkn | Sie beschreiben den Aufbau eines Arbeitsplatzes f\u00fcr die Montage, Inbetriebnahme oder Instandhaltung.<br>\n19.1 % | lze | Sie beschreiben die Abwicklung von Auftr\u00e4gen.<br>\n18.5 % | lze | Sie f\u00fchren Berechnungen mit Zeiteinheiten durch.<br>\n17.5 % | lze | Sie f\u00fchren Berechnungen mit Winkeleinheiten durch.<br>\n17.4 % | lze | Sie erstellen eine kurze und einfache Notiz oder Mitteilung, zum Beispiel f\u00fcr einen Besprechungstermin oder eine Bestell<br>\n16.9 % | lkn | Sie entwickeln hydraulische Steuerungen einer einfachen Funktion.<br>\n16.9 % | lkn | Sie beschreiben die notwendige Infrastruktur und die g\u00e4ngigen F\u00fcgeverfahren f\u00fcr die Montage von Baugruppen oder Ger\u00e4ten.<br>\n16.7 % | lfe | Faszination Dimensionen Basis | In einem Aussenlager sind Sie daf\u00fcr verantwortlich, sechs unterschiedliche Stahlblechbau<br>\n16.7 % | lze | Sie verschlauchen einfache pneumatische Anlagen anhand eines Schemas.<br>\n16.4 % | lkn | Sie entwickeln pneumatische Steuerungen einer einfachen Funktion.<br>\n16.4 % | lze | Sie definieren die geplanten Einrichtzeiten f\u00fcr die Herstellung des Produktes.<br>\n16.4 % | lkn | Sie nehmen einfache mechanische Montagen vor.<br>\n16.3 % | lze | Sie definieren die geplanten Einrichtzeiten f\u00fcr die Herstellung des Produktes.<br>\n16.2 % | lze | Sie erl\u00e4utern englische Begriffe, welche in der Technik verwendet werden.<br>\n16.2 % | lze | Sie beschreiben die Funktion und den Einsatz der gebr\u00e4uchlichsten Maschinenelemente.<br></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": null,
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
