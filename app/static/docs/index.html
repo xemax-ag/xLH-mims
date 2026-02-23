@@ -241,29 +241,64 @@
         <article role="main" id="furo-main-content">
           <section id="xlh-mims">
 <h1>xLH-mims<a class="headerlink" href="#xlh-mims" title="Link to this heading">¶</a></h1>
-<section id="inbetriebnahme">
-<h2>Inbetriebnahme<a class="headerlink" href="#inbetriebnahme" title="Link to this heading">¶</a></h2>
+<section id="installation-windows-docker-xlh-mims-images">
+<h2>Installation Windows Docker + xLH-mims Images<a class="headerlink" href="#installation-windows-docker-xlh-mims-images" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Installation <a href="https://xlh-files.xemax.ch" target="_blank">Docker Desktop</a></p></li>
-</ol>
+<li><p>Installation Docker Desktop
+https://docs.docker.com/desktop/setup/install/windows-install/</p></li>
+<li><p>Erstellung Ordner xLH-mims (in einem nicht synchronisierten Ordner von OneDrive, Teams, Dropbox …
+Es wird empfohlen einen Speicherort zu wählen, welcher keine Lehrschläge im Dateipfad enthält)</p>
 <ul class="simple">
-<li><p>Offizielle Dokumentation <a href="https://docs.docker.com/desktop/setup/install/windows-install/" target="_blank">Install Docker Desktop on Windows</a></p></li>
+<li><p>Unterordner docker</p></li>
+<li><p>Im Browser https://github.com/xemax-ag/xLH-mims/blob/main/xlh_mims_docker_install.bat</p>
+<ul>
+<li><p>Download raw file</p></li>
 </ul>
-<ol class="arabic simple" start="2">
-<li><p>Download des GitHub Repositories</p></li>
-<li><p>Extrahierung des ZIP Archives</p></li>
-</ol>
+</li>
+<li><p>Kopieren der Datei xlh_mims_docker_install.bat in den Ordner docker</p>
+<ul>
+<li><p>Im Browser https://github.com/xemax-ag/xLH-mims/blob/main/docker_compose_xlh_mims.yaml</p></li>
+<li><p>Download raw file</p></li>
+<li><p>Kopieren der Datei docker_compose_xlh_mims.yaml in den Ordner docker</p></li>
+</ul>
+</li>
+<li><p>Ausfüren der Batchdatei xlh_mims_docker_install.bat</p>
+<ul>
+<li><p>Dies führt zum Download und automatischen Start der Docker Images</p></li>
+<li><p>Die persistenden Daten werden in verschiedenen Unterordnern abgelegt ../xLH-mims-data/…</p></li>
+<li><p>Hinweis:Updates der Installation erfolgen durch erneute Ausführung der Batchdatei xlh_mims_docker_install.bat. Aenderungen der Datei docker_compose_xlh_mims.yaml müssen manuell nachgeführt werden.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Programme im Docker Container</p>
 <ul class="simple">
-<li><p>Die Persistenten Daten der Docker Container befinden sich im Ordner “..\xLH-mims-data” (auf gleicher Hirarchyebene wie der zip-extrahierte Ordner)</p></li>
+<li><p>xlh_mims_python_api: =&gt; http://localhost:8099/ =&gt; Interaktives Frontend mit Dokumentation zum Projekt (im Aufbau)</p></li>
+<li><p>xlh_mims_python_jupyter: =&gt; http://localhost:8888/lab =&gt; Jupyter Notebooks, bewährte Python Entwicklungsumgebung im Browser</p></li>
+<li><p>xlh_mims_python_marimo: =&gt; http://localhost:2718/ =&gt; Marimo Notebooks, moderne Python Entwicklungsumgebung im Browser mit der Möglichkeeit auf einfache Weise Applikationen zu erstellen.</p>
+<ul>
+<li><p>sehe ich aktuell als Favoriten für Eigenleistungen aus der Sicht der Lernenden!</p></li>
 </ul>
-<ol class="arabic simple" start="4">
-<li><p>Starten des Docker Containers mittels win_docker_update.bat</p></li>
-</ol>
+</li>
+<li><p>xlh_mims_open_webui: =&gt; http://localhost:8080/ =&gt; GPT Clone</p></li>
+<li><p>xlh_mims_n8n: =&gt; http://localhost:5678/ =&gt; Grafische Workflow-Engine</p></li>
+<li><p>xlh_mims_node_red: =&gt; http://localhost:1880/ =&gt; Grafische Workflow-Engine</p></li>
+<li><p>xlh_mims_mosquitto: MQTT Broker für IoT Anwendungen</p></li>
+<li><p>xlh_mims_postgres: Relationale Datenbank</p></li>
+<li><p>xlh_mims_mariadb: Relationale Datenbank</p></li>
+<li><p>xlh_mims_chromadb: Vektordatenbank für Embeddings bzw. semantische Suche</p></li>
+<li><p>xlh_mims_redis: In-Memory-Cache</p></li>
+<li><p>xlh_mims_mongodb: Nicht relationale Datenbank</p></li>
+</ul>
+</li>
+<li><p>Optionale Programme zur Installation auf dem Host System (frei verfügbar)</p>
 <ul class="simple">
-<li><p>Die aktiven Container sind im Docker Desktop sichtbar
-<img src="https://raw.githubusercontent.com/xemax-ag/xLH-mims/refs/heads/main/docs/_static/img/docker_desktop_1.png" height="300" />
-&lt;– Workaround Link auf GitHub für die Inkludierung in die automatische Dokumentierung mit Sphinx –&gt;</p></li>
+<li><p>Ollama: https://ollama.com/download Ausführung von lokaen LLM-Modellen</p></li>
+<li><p>Navicat Premium Lite: https://www.navicat.com/en/download/navicat-premium-lite Datenbank Client</p></li>
+<li><p>PyCharm: https://www.jetbrains.com/de-de/pycharm/ Python Entwicklungsumgebung</p></li>
 </ul>
+</li>
+</ol>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -326,7 +361,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">xLH-mims</a><ul>
-<li><a class="reference internal" href="#inbetriebnahme">Inbetriebnahme</a><ul>
+<li><a class="reference internal" href="#installation-windows-docker-xlh-mims-images">Installation Windows Docker + xLH-mims Images</a><ul>
 </ul>
 </li>
 </ul>
