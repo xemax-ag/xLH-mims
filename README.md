@@ -1,17 +1,38 @@
-# xLH-mims
-xemax Learning Hub machine intelligence maker space
+# Installation Windows Docker + xLH-mims Images
 
----
+1) Installation Docker Desktop
+   https://docs.docker.com/desktop/setup/install/windows-install/
 
-<!-- documentation start -->
+2) Erstellung Ordner xLH-mims (in einem nicht synchronisierten Ordner von OneDrive, Teams, Dropbox ... 
+   Es wird empfohlen einen Speicherort zu wählen, welcher keine Lehrschläge im Dateipfad enthält)
+     - Unterordner docker
+     - Im Browser https://github.com/xemax-ag/xLH-mims/blob/main/xlh_mims_docker_install.bat
+       - Download raw file
+     - Kopieren der Datei xlh_mims_docker_install.bat in den Ordner docker
+        - Im Browser https://github.com/xemax-ag/xLH-mims/blob/main/docker_compose_xlh_mims.yaml
+       - Download raw file
+       - Kopieren der Datei docker_compose_xlh_mims.yaml in den Ordner docker
+     - Ausfüren der Batchdatei xlh_mims_docker_install.bat
+       - Dies führt zum Download und automatischen Start der Docker Images
+       - Die persistenden Daten werden in verschiedenen Unterordnern abgelegt ../xLH-mims-data/...
+       - Hinweis:Updates der Installation erfolgen durch erneute Ausführung der Batchdatei xlh_mims_docker_install.bat. Aenderungen der Datei docker_compose_xlh_mims.yaml müssen manuell nachgeführt werden.
 
-## Inbetriebnahme
-1. Installation <a href="https://xlh-files.xemax.ch" target="_blank">Docker Desktop</a>
-  - Offizielle Dokumentation <a href="https://docs.docker.com/desktop/setup/install/windows-install/" target="_blank">Install Docker Desktop on Windows</a>
-2. Download des GitHub Repositories
-3. Extrahierung des ZIP Archives
-  - Die Persistenten Daten der Docker Container befinden sich im Ordner "..\xLH-mims-data" (auf gleicher Hirarchyebene wie der zip-extrahierte Ordner)
-4. Starten des Docker Containers mittels win_docker_update.bat
-  - Die aktiven Container sind im Docker Desktop sichtbar
-    <img src="https://raw.githubusercontent.com/xemax-ag/xLH-mims/refs/heads/main/docs/_static/img/docker_desktop_1.png" height="300" />
-    <-- Workaround Link auf GitHub für die Inkludierung in die automatische Dokumentierung mit Sphinx --> 
+3) Programme im Docker Container
+     - xlh_mims_python_api: => http://localhost:8099/ => Interaktives Frontend mit Dokumentation zum Projekt (im Aufbau)
+     - xlh_mims_python_jupyter: => http://localhost:8888/lab => Jupyter Notebooks, bewährte Python Entwicklungsumgebung im Browser
+     - xlh_mims_python_marimo: => http://localhost:2718/ => Marimo Notebooks, moderne Python Entwicklungsumgebung im Browser mit der Möglichkeeit auf einfache Weise Applikationen zu erstellen.
+       - sehe ich aktuell als Favoriten für Eigenleistungen aus der Sicht der Lernenden!
+     - xlh_mims_open_webui: => http://localhost:8080/ => GPT Clone
+     - xlh_mims_n8n: => http://localhost:5678/ => Grafische Workflow-Engine
+     - xlh_mims_node_red: => http://localhost:1880/ => Grafische Workflow-Engine
+     - xlh_mims_mosquitto: MQTT Broker für IoT Anwendungen
+     - xlh_mims_postgres: Relationale Datenbank
+     - xlh_mims_mariadb: Relationale Datenbank
+     - xlh_mims_chromadb: Vektordatenbank für Embeddings bzw. semantische Suche
+     - xlh_mims_redis: In-Memory-Cache
+     - xlh_mims_mongodb: Nicht relationale Datenbank 
+
+4) Optionale Programme zur Installation auf dem Host System (frei verfügbar)
+   - Ollama: https://ollama.com/download Ausführung von lokaen LLM-Modellen
+   - Navicat Premium Lite: https://www.navicat.com/en/download/navicat-premium-lite Datenbank Client
+   - PyCharm: https://www.jetbrains.com/de-de/pycharm/ Python Entwicklungsumgebung
