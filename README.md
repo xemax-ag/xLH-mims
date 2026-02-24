@@ -20,7 +20,7 @@
        - Hinweis:Updates der Installation erfolgen durch erneute Ausführung der Batchdatei xlh_mims_docker_install.bat. Aenderungen der Datei docker_compose_xlh_mims.yaml müssen manuell nachgeführt werden.
 
 3) Programme im Docker Container
-     - xlh_mims_python_api: => http://localhost:8099/ => Interaktives Frontend mit Dokumentation zum Projekt (im Aufbau)
+     - xlh_mims_python_api: => http://localhost:8099/ => Interaktives Frontend mit Dokumentation zum Projekt (im Aufbau) => zentrale Applikation für die Navigation und Uebersicht
      - xlh_mims_python_jupyter: => http://localhost:8888/lab => Jupyter Notebooks, bewährte Python Entwicklungsumgebung im Browser
      - xlh_mims_python_marimo: => http://localhost:2718/ => Marimo Notebooks, moderne Python Entwicklungsumgebung im Browser mit der Möglichkeeit auf einfache Weise Applikationen zu erstellen.
        - sehe ich aktuell als Favoriten für Eigenleistungen aus der Sicht der Lernenden!
