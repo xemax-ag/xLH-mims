@@ -1,3 +1,5 @@
 /.venv/
 /data/
 /notebooks/marimo/src/__marimo__/
+/server_cert.pem
+/server_key.pem
