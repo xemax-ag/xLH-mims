@@ -1,6 +1,7 @@
 from pydantic_ai import Agent, RunContext
 from deps import Deps
 import requests
+import pandas as pd
 
 def set_oven_temperature(ctx: RunContext[Deps], temperature: float) -> bool:
     """
@@ -14,6 +15,22 @@ def set_oven_temperature(ctx: RunContext[Deps], temperature: float) -> bool:
 
 def set_oven_temperature_opcua(temperature: float):
     print(f'=> set_oven_temperature_opcua {temperature}')
+
+def read_hk(ctx: RunContext[Deps], id: str) -> str:
+    """
+    Gibt die Daten zu den Handlungskompetenzen als DataFrame zurück.
+    In den Spalten sind die folgenden Informationen abgelegt:
+    - 'id_hk': ID der Handlungskompetenzen
+    - 'HK': Titel der Handlungskompetenz
+    - 'situation': Beschreibung einer Arbeitssituation der Handlungskompetenz
+    - 'ziel': Beschreibung des Ziels der Handlungskompetenz
+    :param id: ID der Weiterbildung RS oder TS
+    :return: DataFrame mit den Informationen
+    """
+    print(f'=> read_hk {id}')
+    df = pd.read_pickle(f"{id}_HK.pkl")
+    json_str = df.to_json(orient="records")
+    return json_str
 
 def set_color2rgb(ctx: RunContext[Deps], r: int = 0, g: int = 0, b: int = 0):
     """
