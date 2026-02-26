@@ -9,7 +9,7 @@ docs_serve:
 	uv run sphinx-autobuild --open-browser --delay 0 --port 8145 docs app/static/docs
 
 docs_build:
-	uv run sphinx-build docs app/static/docs
+	uv run sphinx-build -b html docs app/static/docs
 
 venv_sync:
 	powershell uv sync --upgrade

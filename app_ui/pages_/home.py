@@ -11,3 +11,9 @@ with st.sidebar:
 
 #######################################################################################################################
 
+st.markdown('### Startseite')
+st.link_button(label='Marimo Notebook', url=f'http://localhost:2718/', use_container_width=False)
+st.link_button(label='Jupyter Notebook', url=f'http://localhost:8888/lab', use_container_width=False)
+st.link_button(label='Open WebUI', url=f'http://localhost:8080/', use_container_width=False)
+st.link_button(label='n8n', url=f'http://localhost:5678/', use_container_width=False)
+st.link_button(label='Node-RED', url=f'http://localhost:1880/', use_container_width=False)

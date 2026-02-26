@@ -6,12 +6,8 @@ RUN apt-get update && apt-get install --no-install-recommends build-essential -y
     apt install openssh-client -y && apt install iputils-ping -y && \
     apt install pgloader -y &&  apt install rsync -y && apt install nano -y && \
     apt install curl -y && apt install pandoc -y && \
-    apt install pandoc -y && \
     apt install libreoffice-core-nogui -y && \
     apt clean && rm -rf /var/lib/apt/lists/*
-
-# apt install pandoc -y && \
-# apt install texlive-full -y && \
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
