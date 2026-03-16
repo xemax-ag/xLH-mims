@@ -80,7 +80,7 @@ services:
     restart: no
 
   xlh_mims_postgres:
-    image: postgres:18.2  # https://hub.docker.com/_/postgres
+    image: postgres:18.3  # https://hub.docker.com/_/postgres
     container_name: xlh_mims_postgres
     build: .
     ports:
@@ -151,20 +151,20 @@ services:
       - ../xLH-mims-data/chromadb:/data
     restart: no
 
-#  xlh_mims_qdrant:
-#    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
-#    container_name: xlh_mims_qdrant
-#    ports:
-#      - 6333:6333
-#      - 6334:6334
-#      - 6335:6335
-#    expose:
-#      - 6333
-#      - 6334
-#      - 6335
-#    volumes:
-#      - ../xLH-mims-data/qdrant:/qdrant/storage
-#    restart: no
+  xlh_mims_qdrant:
+    image: qdrant/qdrant:latest  # https://hub.docker.com/r/qdrant/qdrant
+    container_name: xlh_mims_qdrant
+    ports:
+      - 6333:6333
+      - 6334:6334
+      - 6335:6335
+    expose:
+      - 6333
+      - 6334
+      - 6335
+    volumes:
+      - ../xLH-mims-data/qdrant:/qdrant/storage
+    restart: no
 
   xlh_mims_node_red:
     image: nodered/node-red:latest
@@ -223,7 +223,7 @@ services:
     image: eclipse-mosquitto:latest
     container_name: xlh_mims_mosquitto
     ports:
-      - 1883:1883    # MQTT
+      - 1884:1883    # MQTT
       # - 8883:8883    # MQTTS (secure)
       # - 9001:9001    # WebSockets
 #    volumes:
