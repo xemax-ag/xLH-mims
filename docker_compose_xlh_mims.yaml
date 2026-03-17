@@ -47,21 +47,21 @@ services:
     restart: no
 # docker exec -it xlh_mims_python_api bash
 
-  xlh_mims_open_webui:
-    image: ghcr.io/open-webui/open-webui:latest  # https://github.com/open-webui/open-webui
-    container_name: xlh_mims_open_webui
-    ports:
-      - 8080:8080
-    expose:
-      - 8080
-    volumes:
-      - ../xLH-mims-data/open_webui:/app/backend/data
-    environment:
-      #OPENAI_API_KEY: "OPENAI_API_KEY"
-      #PERPLEXITY_API_KEY: "PERPLEXITY_API_KEY"
-      #ENABLE_ENFORCE_PASSWORD_POLICY: "true"
-      ENV: "dev"
-    restart: no
+#  xlh_mims_open_webui:
+#    image: ghcr.io/open-webui/open-webui:latest  # https://github.com/open-webui/open-webui
+#    container_name: xlh_mims_open_webui
+#    ports:
+#      - 8080:8080
+#    expose:
+#      - 8080
+#    volumes:
+#      - ../xLH-mims-data/open_webui:/app/backend/data
+#    environment:
+#      #OPENAI_API_KEY: "OPENAI_API_KEY"
+#      #PERPLEXITY_API_KEY: "PERPLEXITY_API_KEY"
+#      #ENABLE_ENFORCE_PASSWORD_POLICY: "true"
+#      ENV: "dev"
+#    restart: no
 
   xlh_mims_n8n:
     image: docker.n8n.io/n8nio/n8n  # https://hub.docker.com/r/n8nio/n8n
