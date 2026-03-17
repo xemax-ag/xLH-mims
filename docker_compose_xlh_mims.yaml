@@ -1,50 +1,50 @@
 name: xlh_mims
 services:
-  xlh_mims_python_jupyter:
-    image: xemaxag/xlh_mims_python:latest
-    container_name: xlh_mims_python_jupyter
-    build: .
-    ports:
-      - 8899:8888
-    expose:
-      - 8899
-    environment:
-      MODE: "jupyter"
-    volumes:
-      - ../xLH-mims-data/python/jupyter:/app/notebooks/src/local
-      - ../xLH-mims-data/config:/app/config
-    restart: no
+#  xlh_mims_python_jupyter:
+#    image: xemaxag/xlh_mims_python:latest
+#    container_name: xlh_mims_python_jupyter
+#    build: .
+#    ports:
+#      - 8899:8888
+#    expose:
+#      - 8899
+#    environment:
+#      MODE: "jupyter"
+#    volumes:
+#      - ../xLH-mims-data/python/jupyter:/app/notebooks/src/local
+#      - ../xLH-mims-data/config:/app/config
+#    restart: no
 # docker exec -it xlh_mims_python_jupyter bash
 
-  xlh_mims_python_marimo:
-    image: xemaxag/xlh_mims_python:latest
-    container_name: xlh_mims_python_marimo
-    build: .
-    ports:
-      - 2718:2718
-    expose:
-      - 2718
-    environment:
-      MODE: "marimo"
-    volumes:
-      - ../xLH-mims-data/python/marimo:/app/notebooks/marimo/src/local
-      - ../xLH-mims-data/config:/app/config
-    restart: no
+#  xlh_mims_python_marimo:
+#    image: xemaxag/xlh_mims_python:latest
+#    container_name: xlh_mims_python_marimo
+#    build: .
+#    ports:
+#      - 2718:2718
+#    expose:
+#      - 2718
+#    environment:
+#      MODE: "marimo"
+#    volumes:
+#      - ../xLH-mims-data/python/marimo:/app/notebooks/marimo/src/local
+#      - ../xLH-mims-data/config:/app/config
+#    restart: no
 # docker exec -it xlh_mims_python_marimo bash
 
-  xlh_mims_python_api:
-    image: xemaxag/xlh_mims_python:latest
-    container_name: xlh_mims_python_api
-    build: .
-    ports:
-      - 8099:8099
-    expose:
-      - 8099
-    environment:
-      MODE: "api"
-    volumes:
-      - ../xLH-mims-data/config:/app/config
-    restart: no
+#  xlh_mims_python_api:
+#    image: xemaxag/xlh_mims_python:latest
+#    container_name: xlh_mims_python_api
+#    build: .
+#    ports:
+#      - 8099:8099
+#    expose:
+#      - 8099
+#    environment:
+#      MODE: "api"
+#    volumes:
+#      - ../xLH-mims-data/config:/app/config
+#    restart: no
 # docker exec -it xlh_mims_python_api bash
 
 #  xlh_mims_open_webui:
@@ -63,21 +63,21 @@ services:
 #      ENV: "dev"
 #    restart: no
 
-  xlh_mims_n8n:
-    image: docker.n8n.io/n8nio/n8n  # https://hub.docker.com/r/n8nio/n8n
-    container_name: xlh_mims_n8n
-    ports:
-      - 5678:5678
-    expose:
-      - 5678
-    environment:
-      GENERIC_TIMEZONE: "Europe/Berlin"
-      TZ: "Europe/Berlin"
-      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
-      N8N_RUNNERS_ENABLED: "true"
-    volumes:
-      - ../xLH-mims-data/n8n:/home/node/.n8n
-    restart: no
+#  xlh_mims_n8n:
+#    image: docker.n8n.io/n8nio/n8n  # https://hub.docker.com/r/n8nio/n8n
+#    container_name: xlh_mims_n8n
+#    ports:
+#      - 5678:5678
+#    expose:
+#      - 5678
+#    environment:
+#      GENERIC_TIMEZONE: "Europe/Berlin"
+#      TZ: "Europe/Berlin"
+#      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+#      N8N_RUNNERS_ENABLED: "true"
+#    volumes:
+#      - ../xLH-mims-data/n8n:/home/node/.n8n
+#    restart: no
 
   xlh_mims_postgres:
     image: postgres:18.3  # https://hub.docker.com/_/postgres
