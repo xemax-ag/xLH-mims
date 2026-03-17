@@ -286,3 +286,7 @@ services:
 #    volumes:
 #      - ../xLH-mims-data/mariadb:/var/lib/mysql:Z
 #    restart: no
+
+
+# docker buildx create --use --name multiarch
+# docker buildx inspect --bootstrap

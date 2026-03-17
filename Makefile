@@ -51,3 +51,6 @@ docker_push: docs_build
 docker_update:
 	docker compose -f docker_compose_xlh_mims.yaml down --remove-orphans
 	docker compose -f docker_compose_xlh_mims.yaml up --pull always -d
+
+docker_push_arm64: docs_build
+	docker buildx build -f Dockerfile_xlh_mims_python --platform linux/amd64,linux/arm64 --push -t xemaxag/xlh_mims_python:latest .
