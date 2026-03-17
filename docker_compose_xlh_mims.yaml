@@ -219,18 +219,18 @@ services:
 #/config/.local/bin/proot-apps install filezilla && \
 #/config/.local/bin/proot-apps install pycharm
 
-  xlh_mims_mosquitto:
-    image: eclipse-mosquitto:latest
-    container_name: xlh_mims_mosquitto
-    ports:
-      - 1884:1883    # MQTT
-      # - 8883:8883    # MQTTS (secure)
-      # - 9001:9001    # WebSockets
-#    volumes:
-#      - ../xLH-mims-data/mosquitto/config:/mosquitto/config
-#      - ../xLH-mims-data/mosquitto/data:/mosquitto/data
-#      - ../xLH-mims-data/mosquitto/log:/mosquitto/log
-    restart: no
+#  xlh_mims_mosquitto:
+#    image: eclipse-mosquitto:latest
+#    container_name: xlh_mims_mosquitto
+#    ports:
+#      - 1883:1883    # MQTT
+#      # - 8883:8883    # MQTTS (secure)
+#      # - 9001:9001    # WebSockets
+##    volumes:
+##      - ../xLH-mims-data/mosquitto/config:/mosquitto/config
+##      - ../xLH-mims-data/mosquitto/data:/mosquitto/data
+##      - ../xLH-mims-data/mosquitto/log:/mosquitto/log
+#    restart: no
 
 #  xlh_mims_moodle:
 #    image: ellakcy/moodle:mysql_maria_apache_404_php8.3  # https://hub.docker.com/r/ellakcy/moodle
@@ -288,5 +288,5 @@ services:
 #    restart: no
 
 
-# docker buildx create --use --name multiarch
-# docker buildx inspect --bootstrap
+# https://docs.docker.com/build/building/multi-platform/
+# docker run --privileged --rm tonistiigi/binfmt --install all
