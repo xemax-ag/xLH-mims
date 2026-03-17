@@ -5,9 +5,9 @@ services:
     container_name: xlh_mims_python_jupyter
     build: .
     ports:
-      - 8888:8888
+      - 8899:8888
     expose:
-      - 8888
+      - 8899
     environment:
       MODE: "jupyter"
     volumes:
