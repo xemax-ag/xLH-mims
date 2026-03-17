@@ -166,18 +166,18 @@ services:
 #      - ../xLH-mims-data/qdrant:/qdrant/storage
 #    restart: no
 
-  xlh_mims_node_red:
-    image: nodered/node-red:latest
-    container_name: xlh_mims_node_red
-    environment:
-      TZ: "Europe/Berlin"
-    ports:
-      - 1880:1880
-    expose:
-      - 1880
-    volumes:
-      - ../xLH-mims-data/node_red:/data
-    restart: no
+#  xlh_mims_node_red:
+#    image: nodered/node-red:latest
+#    container_name: xlh_mims_node_red
+#    environment:
+#      TZ: "Europe/Berlin"
+#    ports:
+#      - 1880:1880
+#    expose:
+#      - 1880
+#    volumes:
+#      - ../xLH-mims-data/node_red:/data
+#    restart: no
 
   xlh_mims_mongodb:
     image: mongo:latest
